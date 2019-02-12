@@ -53,11 +53,11 @@ function populatePaymentInstrumentsList() {
     listNode.removeChild(listNode.lastChild);
   }
 
-  if (methodData.some(method => method["supportedMethods"].includes("https://bobpay.xyz/pay"))) {
-    // This merchant supports bobpay, offer bobpay balance as an option
+  if (methodData.some(method => method["supportedMethods"].includes("https://achpayment.org/pay"))) {
+    // This merchant supports achpayment, offer achpayment balance as an option
     var label = document.createElement("h4");
-    label.innerHTML = "Pay with BobPay balance ($50.00)";
-    addToInstrumentList(label, payWithBobPayBalance);
+    label.innerHTML = "Pay with achpayment balance ($50.00)";
+    addToInstrumentList(label, payWithachpaymentBalance);
   }
 
   if (methodData.some(method => method["supportedMethods"].includes("basic-card"))) {
@@ -139,14 +139,14 @@ function addCardConfirmed(name, number, expiryMonth, expiryYear) {
   populatePaymentInstrumentsList();
 }
 
-function payWithBobPayBalance() {
+function payWithachpaymentBalance() {
   if(!paymentRequestClient) return;
 
   var paymentAppResponse = {
-    methodName: "https://bobpay.xyz/pay",
+    methodName: "https://achpayment.org/pay",
     details: {
-      bobpay_token_id: "ABCDEADBEEF",
-      message: "Thanks for using BobPay!"
+      achpayment_token_id: "ABCDEADBEEF",
+      message: "Thanks for using achpayment!"
     }
   };
 
